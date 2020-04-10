@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MemoList - Baptiste LECHAT</string>
+    <string name="AddMemo">Saisir le titre du nouveau mémo</string>
+    <string name="Add">+</string>
+
+    <string name="blank_fragment">A blank fragment</string>
+</resources>
