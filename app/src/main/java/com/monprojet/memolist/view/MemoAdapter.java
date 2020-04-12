@@ -19,7 +19,7 @@ import com.loopj.android.http.RequestParams;
 import com.monprojet.memolist.R;
 import com.monprojet.memolist.controller.DetailActivity;
 import com.monprojet.memolist.model.MemoDTO;
-import com.monprojet.memolist.model.json.RetourWsForm;
+import com.monprojet.memolist.model.json.Form;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,6 +29,7 @@ import cz.msebera.android.httpclient.Header;
 public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder> {
 
     private static final String TAG = "MemoAdapter";
+
     private List<MemoDTO> MemoList;
     public String result;
 
@@ -97,7 +98,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
 
                             // conversion en un objet Java (à faire!) ayant le même format que le JSON :
                             Gson gson = new Gson();
-                            RetourWsForm frm = gson.fromJson(retour, RetourWsForm.class);
+                            Form frm = gson.fromJson(retour, Form.class);
 
                             result = frm.form.memo;
                             Log.i(TAG, result);

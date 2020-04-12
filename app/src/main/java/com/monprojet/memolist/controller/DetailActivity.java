@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.monprojet.memolist.R;
 import com.monprojet.memolist.controller.DetailFragment;
@@ -25,8 +27,8 @@ public class DetailActivity extends AppCompatActivity {
 
         DetailFragment fragment = new DetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("memo", MemoName);
         fragment.setArguments(bundle);
+        bundle.putString("memo", MemoName);
 
         // fragment manager :
         FragmentManager fragmentManager = getSupportFragmentManager();

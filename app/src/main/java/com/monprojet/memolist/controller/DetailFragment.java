@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.monprojet.memolist.R;
 
 public class DetailFragment extends Fragment {
+
     private static final String TAG = "DetailFragment";
+    TextView txtFragment;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -21,14 +24,15 @@ public class DetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         String argument = getArguments().getString("memo", "DEFAULT");
         Log.i(TAG, "onActivityCreated: ARGUMENT :"+argument);
+
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_detail, container, false);
+        txtFragment = root.findViewById(R.id.txtFragment);
+        txtFragment.setText(argument);
+
+        // Inflate the layout for this fragment
+        return root;
     }
 }

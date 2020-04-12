@@ -1,5 +1,5 @@
 package com.monprojet.memolist.model.json;
 
-public class RetourWsMemo {
+public class Memo {
     public String memo;
 }
