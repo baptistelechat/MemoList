@@ -1,4 +1,4 @@
-package com.monprojet.memolist.memo;
+package com.monprojet.memolist.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +17,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.monprojet.memolist.R;
-import com.monprojet.memolist.activity.DetailActivity;
-import com.monprojet.memolist.bdd.MemoDTO;
-import com.monprojet.memolist.bdd.RetourWsForm;
+import com.monprojet.memolist.controller.DetailActivity;
+import com.monprojet.memolist.model.MemoDTO;
+import com.monprojet.memolist.model.json.RetourWsForm;
 
 import java.util.Collections;
 import java.util.List;

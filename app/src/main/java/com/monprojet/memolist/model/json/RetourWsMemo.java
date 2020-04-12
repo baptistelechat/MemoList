@@ -1,4 +1,4 @@
-package com.monprojet.memolist.bdd;
+package com.monprojet.memolist.model.json;
 
 public class RetourWsMemo {
     public String memo;

@@ -1,4 +1,4 @@
-package com.monprojet.memolist.bdd;
+package com.monprojet.memolist.model;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

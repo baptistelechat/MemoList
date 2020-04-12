@@ -1,4 +1,4 @@
-package com.monprojet.memolist.bdd;
+package com.monprojet.memolist.model;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

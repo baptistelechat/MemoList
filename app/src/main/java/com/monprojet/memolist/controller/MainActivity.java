@@ -1,4 +1,4 @@
-package com.monprojet.memolist.activity;
+package com.monprojet.memolist.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,11 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.monprojet.memolist.R;
-import com.monprojet.memolist.bdd.AppDatabaseHelper;
-import com.monprojet.memolist.bdd.MemoDTO;
-import com.monprojet.memolist.memo.MemoAdapter;
+import com.monprojet.memolist.model.AppDatabaseHelper;
+import com.monprojet.memolist.model.MemoDTO;
+import com.monprojet.memolist.view.MemoAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

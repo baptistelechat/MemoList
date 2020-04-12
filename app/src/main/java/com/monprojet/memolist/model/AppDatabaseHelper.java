@@ -1,4 +1,4 @@
-package com.monprojet.memolist.bdd;
+package com.monprojet.memolist.model;
 
 import android.content.Context;
 
