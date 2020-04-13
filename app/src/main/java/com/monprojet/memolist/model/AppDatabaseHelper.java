@@ -9,6 +9,7 @@ public class AppDatabaseHelper
     // Attributs :
     private static AppDatabaseHelper databaseHelper = null;
     private AppDatabase database;
+
     // Constructeur :
     private AppDatabaseHelper(Context context)
     {

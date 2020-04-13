@@ -17,6 +17,7 @@ public class DetailFragment extends Fragment {
 
     private static final String TAG = "DetailFragment";
     TextView Name;
+    TextView Description;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -26,15 +27,18 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Get MemoName from MainActivity
-        String argument = getArguments().getString("memo", "DEFAULT");
-        Log.i(TAG, "onActivityCreated: ARGUMENT :"+argument);
+        String argumentName = getArguments().getString("memoName", "DEFAULTNM");
+        String argumentDescription = getArguments().getString("memoDescription", "DEFAULTDS");
+        Log.i(TAG, "onActivityCreated: ARGUMENT :"+argumentName+" / "+argumentDescription);
 
         // Inflate - Convert XML to View Object
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_detail, container, false);
 
-        // Set Textview by MemoName
+        // Set Textview of MemoName
         Name = root.findViewById(R.id.MemoName);
-        Name.setText(argument);
+        Name.setText(argumentName);
+        Description = root.findViewById(R.id.MemoDescription);
+        Description.setText(argumentDescription);
 
         // Inflate the layout for this fragment
         return root;

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // MemoList
-        List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
+         List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
 
         // MemoAdapter
         memoAdapter = new MemoAdapter(MemoList);
@@ -53,9 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Get last Memo who was clicked and give a "Toast" on output
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String out = preferences.getString("memo", "Bienvenue !");
-        Log.i(TAG, "onCreate: memo :"+out);
-        Toast.makeText(this, out, Toast.LENGTH_SHORT).show();
+        String outName = preferences.getString("memoName", "TITRE");
+        String outDescription = preferences.getString("memoDescription", "DESCRIPTION");
+        Log.i(TAG, "onCreate: outNAME :"+outName+" / "+outDescription);
+        Toast.makeText(this, "Titre : "+outName+"\nDescription : "+outDescription, Toast.LENGTH_SHORT).show();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -63,13 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Add new Memo on click "+"
     public void clickButton(View view) {
-        EditText input = findViewById(R.id.input);
+        EditText name = findViewById(R.id.inputName);
+        EditText description = findViewById(R.id.inputDescription);
 
-        if (input.getText().toString().equals("")) {
-            Toast.makeText(view.getContext(), "Champ de saisie vide", Toast.LENGTH_SHORT).show();
+       if (name.getText().toString().equals("") && description.getText().toString().equals("")) {
+           Toast.makeText(view.getContext(), "Titre et desciption vide", Toast.LENGTH_SHORT).show();
+       } else if (name.getText().toString().equals("")) {
+            Toast.makeText(view.getContext(), "Titre vide", Toast.LENGTH_SHORT).show();
+
+        } else if (description.getText().toString().equals("")) {
+            Toast.makeText(view.getContext(), "Description vide", Toast.LENGTH_SHORT).show();
 
         } else {
-            MemoDTO memoDTO = new MemoDTO(input.getText().toString());
+            MemoDTO memoDTO = new MemoDTO(name.getText().toString(), description.getText().toString());
             memoAdapter.ajouterMemo(memoDTO);
         }
 

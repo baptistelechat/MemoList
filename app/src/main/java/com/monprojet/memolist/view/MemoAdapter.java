@@ -77,17 +77,19 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
                 public void onClick(final View view) {
                     final MemoDTO memo = MemoList.get(getAdapterPosition());
                     Log.i(TAG, "onClick: Position : " + getAdapterPosition());
-                    Toast.makeText(view.getContext(), "Memo : "+memo.name, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Titre : "+memo.name, Toast.LENGTH_SHORT).show();
 
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getContext());
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("memo", memo.name);
+                    editor.putString("memoName", memo.name);
+                    editor.putString("memoDescription", memo.description);
                     editor.apply();
 
                     // Load Fragment if ORIENTATION_PORTRAIT else ORIENTATION_LANDSCAPE
                     if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                         Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                        intent.putExtra("memo", memo.name);
+                        intent.putExtra("memoName", memo.name);
+                        intent.putExtra("memoDescription", memo.description);
                         view.getContext().startActivity(intent);
                     }
 

@@ -22,8 +22,9 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         // Get data from MainActivity
-        String MemoName = getIntent().getStringExtra("memo");
-        Log.i(TAG, "onCreate: ITEM = "+MemoName);
+        String MemoName = getIntent().getStringExtra("memoName");
+        String MemoDescription = getIntent().getStringExtra("memoDescription");
+        Log.i(TAG, "onCreate: ITEM = "+MemoName +" / "+MemoDescription);
 
         // Add DetailFragment into DetailActivity
         DetailFragment fragment = new DetailFragment();
@@ -31,7 +32,8 @@ public class DetailActivity extends AppCompatActivity {
         // Set data to DetailFragment
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
-        bundle.putString("memo", MemoName);
+        bundle.putString("memoName", MemoName);
+        bundle.putString("memoDescription", MemoDescription);
 
         // FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
