@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String outName = preferences.getString("memoName", "TITRE");
         String outDescription = preferences.getString("memoDescription", "DESCRIPTION");
-        Log.i(TAG, "onCreate: outNAME :"+outName+" / "+outDescription);
+        Log.i(TAG, "onCreate: LastMemo :"+outName+" / "+outDescription);
         Toast.makeText(this, "Titre : "+outName+"\nDescription : "+outDescription, Toast.LENGTH_SHORT).show();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             MemoDTO memoDTO = new MemoDTO(name.getText().toString(), description.getText().toString());
             memoAdapter.ajouterMemo(memoDTO);
+           Toast.makeText(this, "Memo ajouté !", Toast.LENGTH_SHORT).show();
+            name.setText("");
+            description.setText("");
         }
 
     }
