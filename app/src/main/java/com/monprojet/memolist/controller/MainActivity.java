@@ -1,6 +1,7 @@
 package com.monprojet.memolist.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.monprojet.memolist.R;
 import com.monprojet.memolist.model.AppDatabaseHelper;
 import com.monprojet.memolist.model.MemoDTO;
+import com.monprojet.memolist.view.ItemTouchHelperCallback;
 import com.monprojet.memolist.view.MemoAdapter;
 
 import java.util.List;
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         String out = preferences.getString("memo", "Bienvenue !");
         Log.i(TAG, "onCreate: memo :"+out);
         Toast.makeText(this, out, Toast.LENGTH_SHORT).show();
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     // Add new Memo on click "+"

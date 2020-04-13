@@ -148,20 +148,20 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
 //    ----------------
 //     Move elements + delete elements
 //    ----------------
-//    public boolean onItemMove(int positionDebut, int positionFin)
-//    {
-//        Collections.swap(MemoList, positionDebut, positionFin);
-//        notifyItemMoved(positionDebut, positionFin);
-//        return true;
-//    }
-//    // Appelé une fois à la suppression.
-//    public void onItemDismiss(int position)
-//    {
-//        if (position > -1)
-//        {
-//            MemoList.remove(position);
-//            notifyItemRemoved(position);
-//        }
-//    }
+    public boolean onItemMove(int positionDebut, int positionFin)
+    {
+        Collections.swap(MemoList, positionDebut, positionFin);
+        notifyItemMoved(positionDebut, positionFin);
+        return true;
+    }
+    // Appelé une fois à la suppression.
+    public void onItemDismiss(int position)
+    {
+        if (position > -1)
+        {
+            MemoList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
 
 }
