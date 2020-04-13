@@ -21,18 +21,22 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        // fragment :
+        // Get data from MainActivity
         String MemoName = getIntent().getStringExtra("memo");
         Log.i(TAG, "onCreate: ITEM = "+MemoName);
 
+        // Add DetailFragment into DetailActivity
         DetailFragment fragment = new DetailFragment();
+
+        // Set data to DetailFragment
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
         bundle.putString("memo", MemoName);
 
-        // fragment manager :
+        // FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
-        // transaction :
+
+        // Transaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_fragment, fragment, "exemple1");
         fragmentTransaction.commit();

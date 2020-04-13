@@ -25,10 +25,14 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Get MemoName from MainActivity
         String argument = getArguments().getString("memo", "DEFAULT");
         Log.i(TAG, "onActivityCreated: ARGUMENT :"+argument);
 
+        // Inflate - Convert XML to View Object
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_detail, container, false);
+
+        // Set Textview by MemoName
         txtFragment = root.findViewById(R.id.txtFragment);
         txtFragment.setText(argument);
 

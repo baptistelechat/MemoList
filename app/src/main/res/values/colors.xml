@@ -6,7 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
-    <color name="colorPrimaryRoot">#6200EE</color>
-    <color name="colorPrimaryDarkRoot">#3700B3</color>
-    <color name="colorAccentRoot">#03DAC5</color>
+    <color name="colorPrimaryOld">#6200EE</color>
+    <color name="colorPrimaryDarkOld">#3700B3</color>
+    <color name="colorAccentOld">#03DAC5</color>
 </resources>

@@ -31,24 +31,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.MemoList);
 
+        // For best performances
         recyclerView.setHasFixedSize(true);
 
+        // LinearLayoutManager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        // MemoList
         List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
 
+        // MemoAdapter
         memoAdapter = new MemoAdapter(MemoList);
         recyclerView.setAdapter(memoAdapter);
 
+        // Create Database
         AppDatabaseHelper.getDatabase(this);
 
+        // Get last Memo who was clicked and give a "Toast" on output
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String out = preferences.getString("memo", "Bienvenue !");
         Log.i(TAG, "onCreate: memo :"+out);
         Toast.makeText(this, out, Toast.LENGTH_SHORT).show();
     }
 
+    // Add new Memo on click "+"
     public void clickButton(View view) {
         EditText input = findViewById(R.id.input);
         MemoDTO memoDTO = new MemoDTO(input.getText().toString());

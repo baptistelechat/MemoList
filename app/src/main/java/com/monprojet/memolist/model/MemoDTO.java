@@ -3,6 +3,7 @@ package com.monprojet.memolist.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Create Memo object structure
 @Entity(tableName = "memoTable")
 public class MemoDTO
 {

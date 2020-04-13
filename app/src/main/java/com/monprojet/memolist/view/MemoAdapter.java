@@ -52,7 +52,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
     @Override
     public void onBindViewHolder(MemoViewHolder holder, int position)
     {
-        holder.TextViewLabelMemo.setText(MemoList.get(position).name);
+        holder.tvLabelMemo.setText(MemoList.get(position).name);
     }
 
     @Override
@@ -62,21 +62,21 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
 
     public class MemoViewHolder extends RecyclerView.ViewHolder
     {
-        // TextView intitulé course :
-        public TextView TextViewLabelMemo;
+        // TextView
+        public TextView tvLabelMemo;
 
         // Constructeur :
         public MemoViewHolder(View itemView)
         {
             super(itemView);
             final int orientation = itemView.getResources().getConfiguration().orientation;
-            TextViewLabelMemo = itemView.findViewById(R.id.LabelMemo);
-            TextViewLabelMemo.setOnClickListener(new View.OnClickListener() {
+            tvLabelMemo = itemView.findViewById(R.id.LabelMemo);
+            tvLabelMemo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
                     final MemoDTO memo = MemoList.get(getAdapterPosition());
                     Log.i(TAG, "onClick: Position : " + getAdapterPosition());
-                    //Toast.makeText(view.getContext(), memo.name, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Memo : "+memo.name, Toast.LENGTH_SHORT).show();
 
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(view.getContext());
                     SharedPreferences.Editor editor = preferences.edit();
@@ -90,9 +90,9 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
                         view.getContext().startActivity(intent);
                     }
 
-                    //----------------
-                    // ERROR
-                    //----------------
+//                    ----------------
+//                     CRASH ON RUN
+//                    ----------------
 //                    } else {
 //                        DetailFragment fragment = new DetailFragment();
 //                        // fragment manager :
@@ -105,26 +105,25 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
 
                     // client HTTP :
                     AsyncHttpClient client = new AsyncHttpClient();
-                    // paramètres :
+                    // Params :
                     RequestParams requestParams = new RequestParams();
                     requestParams.put("memo", memo.name);
-                    // appel :
+                    // CRUD - Post :
                     client.post("http://httpbin.org/post", requestParams, new AsyncHttpResponseHandler()
                     {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] response)
                         {
-                            // Retour du WS :
+                            // WS return :
                             String retour = new String(response);
                             Log.i(TAG, retour);
 
-                            // conversion en un objet Java (à faire!) ayant le même format que le JSON :
+                            // Convert Json to Java :
                             Gson gson = new Gson();
                             Form frm = gson.fromJson(retour, Form.class);
 
                             result = frm.form.memo;
                             Log.i(TAG, result);
-                            Toast.makeText(view.getContext(), result, Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -144,6 +143,10 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
         notifyItemInserted(MemoList.size());
     }
 
+
+//    ----------------
+//     Move elements + delete elements
+//    ----------------
 //    public boolean onItemMove(int positionDebut, int positionFin)
 //    {
 //        Collections.swap(MemoList, positionDebut, positionFin);
