@@ -58,11 +58,15 @@ public class MainActivity extends AppCompatActivity {
     // Add new Memo on click "+"
     public void clickButton(View view) {
         EditText input = findViewById(R.id.input);
-        MemoDTO memoDTO = new MemoDTO(input.getText().toString());
-        memoAdapter.ajouterMemo(memoDTO);
+
+        if (input.getText().toString().equals("")) {
+            Toast.makeText(view.getContext(), "Champ de saisie vide", Toast.LENGTH_SHORT).show();
+
+        } else {
+            MemoDTO memoDTO = new MemoDTO(input.getText().toString());
+            memoAdapter.ajouterMemo(memoDTO);
+        }
+
     }
-
-
-
 
 }
