@@ -4,16 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.DetailFragment"
-    android:id="@+id/fragment">
+    android:id="@+id/fragment"
+    android:background="@color/colorPrimaryLight">
 
     <TextView
-        android:id="@+id/txtFragment"
+        android:id="@+id/MemoName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/blank_fragment"
         android:textSize="25sp"
-        android:background="@color/colorPrimary"
         android:textColor="@color/white"
-        android:gravity="center"/>
+        android:gravity="left"
+        android:textStyle="bold"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"/>
 
 </FrameLayout>

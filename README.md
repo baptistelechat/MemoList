@@ -40,3 +40,9 @@ This project use Gitmoji : "An emoji guide for your commit messages".
 			 alt="Gitmoji">
 	</a>
 </p>
+
+## Icons8
+
+This project use [icons8](https://icones8.fr/).
+
+<a target="_blank" href="https://icones8.fr/icons/set/help">Aide icon</a> icon by <a target="_blank" href="https://icones8.fr">Icons8</a>

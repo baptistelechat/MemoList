@@ -16,7 +16,7 @@ import com.monprojet.memolist.R;
 public class DetailFragment extends Fragment {
 
     private static final String TAG = "DetailFragment";
-    TextView txtFragment;
+    TextView Name;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -33,8 +33,8 @@ public class DetailFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_detail, container, false);
 
         // Set Textview by MemoName
-        txtFragment = root.findViewById(R.id.txtFragment);
-        txtFragment.setText(argument);
+        Name = root.findViewById(R.id.MemoName);
+        Name.setText(argument);
 
         // Inflate the layout for this fragment
         return root;

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -74,4 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void showHelp(View view) {
+        Intent intent = new Intent(view.getContext(), HelpActivity.class);
+        view.getContext().startActivity(intent);
+    }
 }
