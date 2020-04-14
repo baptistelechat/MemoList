@@ -1,5 +1,6 @@
 package com.monprojet.memolist.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -91,20 +92,24 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
                         intent.putExtra("memoName", memo.name);
                         intent.putExtra("memoDescription", memo.description);
                         view.getContext().startActivity(intent);
-                    }
+                    } else {
+                        // Add DetailFragment into DetailActivity
+                        DetailFragment fragment = new DetailFragment();
 
-//                    ----------------
-//                     CRASH ON RUN
-//                    ----------------
-//                    } else {
-//                        DetailFragment fragment = new DetailFragment();
-//                        // fragment manager :
-//                        FragmentManager fragmentManager = getSupportFragmentManager();
-//                        // transaction :
-//                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                        fragmentTransaction.replace(R.id.fragmentLandscape, fragment, "exemple1");
-//                        fragmentTransaction.commit();
-//                    }
+                        // Set data to DetailFragment
+                        Bundle bundle = new Bundle();
+                        fragment.setArguments(bundle);
+                        bundle.putString("memoName", memo.name);
+                        bundle.putString("memoDescription", memo.description);
+
+                        // FragmentManager TODO ERREUR getSupportFragmentManager()
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+
+                        // Transaction
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.container_fragment, fragment, "exemple2");
+                        fragmentTransaction.commit();
+                    }
 
                     // client HTTP :
                     AsyncHttpClient client = new AsyncHttpClient();

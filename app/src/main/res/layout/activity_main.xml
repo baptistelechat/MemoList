@@ -76,6 +76,5 @@
         android:layout_marginRight="10dp"
         android:onClick="clickButton"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
