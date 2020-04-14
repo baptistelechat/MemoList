@@ -39,10 +39,12 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
     private static final String TAG = "MemoAdapter";
 
     private List<MemoDTO> MemoList;
+    public Activity activity;
     public String result;
 
-    public MemoAdapter(List<MemoDTO> MemoList) {
+    public MemoAdapter(List<MemoDTO> MemoList, Activity activity) {
         this.MemoList = MemoList;
+        this.activity = activity;
     }
 
     @Override
@@ -73,6 +75,8 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
             super(itemView);
             final int orientation = itemView.getResources().getConfiguration().orientation;
             tvLabelMemo = itemView.findViewById(R.id.LabelMemo);
+
+
             tvLabelMemo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
@@ -102,8 +106,8 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
                         bundle.putString("memoName", memo.name);
                         bundle.putString("memoDescription", memo.description);
 
-                        // FragmentManager TODO ERREUR getSupportFragmentManager()
-                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        // FragmentManager
+                        FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
                         // Transaction
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

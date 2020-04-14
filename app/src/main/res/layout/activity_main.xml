@@ -22,7 +22,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:maxLength="25"
-        android:layout_marginStart="8dp"/>
+        android:layout_marginStart="8dp"
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/inputDescription"
@@ -38,7 +40,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        android:layout_marginEnd="10dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -47,7 +52,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/icons8_aide_100"
         android:elevation="2dp"
-        android:onClick="showHelp"/>
+        android:onClick="showHelp"
+        android:contentDescription="@string/help" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/MemoList"
@@ -74,7 +80,8 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginRight="10dp"
-        android:onClick="clickButton"/>
+        android:onClick="clickButton"
+        android:layout_marginEnd="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

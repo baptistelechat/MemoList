@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">MemoList - Baptiste LECHAT</string>
-    <string name="Name">Titre</string>
+    <string name="Name">Titre (25 caractères max.)</string>
     <string name="Description">Description</string>
     <string name="Add">+</string>
 
     <string name="blank_fragment">A blank fragment</string>
+    <string name="help">Help</string>
 </resources>
