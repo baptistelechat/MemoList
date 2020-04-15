@@ -87,8 +87,6 @@
         android:onClick="clickButton"
         android:layout_marginEnd="10dp" />
 
-
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/fragmentLandscape"
         android:layout_width="0dp"
