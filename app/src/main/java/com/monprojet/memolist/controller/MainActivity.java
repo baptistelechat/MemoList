@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
          List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
 
         // MemoAdapter
-        memoAdapter = new MemoAdapter(MemoList);
+        memoAdapter = new MemoAdapter(MemoList, this);
         recyclerView.setAdapter(memoAdapter);
 
         // Create Database

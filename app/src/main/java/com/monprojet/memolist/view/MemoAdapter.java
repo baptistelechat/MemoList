@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,10 +40,10 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
     private static final String TAG = "MemoAdapter";
 
     private List<MemoDTO> MemoList;
-    public Activity activity;
+    public AppCompatActivity activity;
     public String result;
 
-    public MemoAdapter(List<MemoDTO> MemoList, Activity activity) {
+    public MemoAdapter(List<MemoDTO> MemoList, AppCompatActivity activity) {
         this.MemoList = MemoList;
         this.activity = activity;
     }
@@ -111,7 +112,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
 
                         // Transaction
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.container_fragment, fragment, "exemple2");
+                        fragmentTransaction.replace(R.id.fragmentLandscape, fragment, "exemple2");
                         fragmentTransaction.commit();
                     }
 
