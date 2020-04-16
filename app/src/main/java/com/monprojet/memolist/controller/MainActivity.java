@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private MemoAdapter memoAdapter;
     private static final String TAG = "MainActivity";
 
+    private String Name;
+    private String Description;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         // MemoList
          List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
+        Log.i(TAG, "onCreate: BDD : "+MemoList);
 
         // MemoAdapter
         memoAdapter = new MemoAdapter(MemoList, this);
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         String outName = preferences.getString("memoName", "TITRE");
         String outDescription = preferences.getString("memoDescription", "DESCRIPTION");
         Log.i(TAG, "onCreate: LastMemo :"+outName+" / "+outDescription);
-        Toast.makeText(this, "Titre : "+outName+"\nDescription : "+outDescription, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Titre : "+outName, Toast.LENGTH_SHORT).show();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
         itemTouchHelper.attachToRecyclerView(recyclerView);

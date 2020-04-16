@@ -11,7 +11,6 @@ public class MemoDTO
     @PrimaryKey(autoGenerate = true)
     public long memoId = 0;
     public String name;
-    @Ignore
     public String description;
 
     public MemoDTO() {}

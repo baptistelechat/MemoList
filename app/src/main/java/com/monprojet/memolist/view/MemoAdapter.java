@@ -27,6 +27,7 @@ import com.loopj.android.http.RequestParams;
 import com.monprojet.memolist.R;
 import com.monprojet.memolist.controller.DetailActivity;
 import com.monprojet.memolist.controller.DetailFragment;
+import com.monprojet.memolist.model.AppDatabaseHelper;
 import com.monprojet.memolist.model.MemoDTO;
 import com.monprojet.memolist.model.json.Form;
 

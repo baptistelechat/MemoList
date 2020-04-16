@@ -12,12 +12,16 @@ import java.util.List;
 public abstract class MemoDAO {
     @Query("SELECT * FROM memoTable")
     public abstract List<MemoDTO> getListeMemo();
+
     @Query("SELECT COUNT(*) FROM memoTable WHERE name = :name")
     public abstract long countMemoParName(String name);
+
     @Insert
     public abstract void insert(MemoDTO... memo);
+
     @Update
     public abstract void update(MemoDTO... memo);
+
     @Delete
     public abstract void delete(MemoDTO... memo);
 }
