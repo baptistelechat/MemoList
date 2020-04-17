@@ -172,9 +172,10 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
     {
         if (position > -1)
         {
+            AppDatabaseHelper.getDatabase(this.activity).MemoDAO().delete(MemoList.get(position));
             MemoList.remove(position);
             notifyItemRemoved(position);
-//            AppDatabaseHelper.getDatabase(activity.getApplicationContext()).MemoDAO().delete(MemoList.get(position));
+
         }
     }
 
