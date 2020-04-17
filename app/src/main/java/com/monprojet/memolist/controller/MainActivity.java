@@ -27,16 +27,22 @@ public class MainActivity extends AppCompatActivity {
     private MemoAdapter memoAdapter;
     private static final String TAG = "MainActivity";
 
-    private String Name;
-    private String Description;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.MemoList);
+
+//        //
+//        if (savedInstanceState != null)
+//        {
+//            Log.i(TAG, "onSaveInstanceState: IF");
+//        }
+//        else
+//        {
+//            Log.i(TAG, "onSaveInstanceState: ELSE");
+//        }
 
         // For best performances
         recyclerView.setHasFixedSize(true);
@@ -56,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         // Create Database
         AppDatabaseHelper.getDatabase(this);
 
+        // Get Database
+        AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
+
         // Get last Memo who was clicked and give a "Toast" on output
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String outName = preferences.getString("memoName", "TITRE");
@@ -66,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState)
+//    {
+//    // sauvegardes :
+//        for (int i = 1; i <= (memoAdapter.getItemCount()); i++) {
+//            Log.i(TAG, "onSaveInstanceState: I : "+ i);
+//
+//        }
+//
+//    // permet à Android de faire ses propres sauvegardes :
+//        super.onSaveInstanceState(outState);
+//    }
 
     // Add new Memo on click "+"
     public void clickButton(View view) {
@@ -83,12 +105,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             MemoDTO memoDTO = new MemoDTO(name.getText().toString(), description.getText().toString());
             memoAdapter.ajouterMemo(memoDTO);
-           Toast.makeText(this, "Memo ajouté !", Toast.LENGTH_SHORT).show();
+            AppDatabaseHelper.getDatabase(this).MemoDAO().insert(memoDTO);
+            Toast.makeText(this, "Memo ajouté !", Toast.LENGTH_SHORT).show();
             name.setText("");
             description.setText("");
         }
 
     }
+
 
     public void showHelp(View view) {
         Intent intent = new Intent(view.getContext(), HelpActivity.class);

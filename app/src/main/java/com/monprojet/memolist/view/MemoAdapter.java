@@ -174,6 +174,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MemoViewHolder
         {
             MemoList.remove(position);
             notifyItemRemoved(position);
+//            AppDatabaseHelper.getDatabase(activity.getApplicationContext()).MemoDAO().delete(MemoList.get(position));
         }
     }
 
