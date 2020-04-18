@@ -25,6 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private MemoAdapter memoAdapter;
+    private List<MemoDTO> MemoList;
     private static final String TAG = "MainActivity";
 
     @Override
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // MemoList
-         List<MemoDTO> MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
+        MemoList = AppDatabaseHelper.getDatabase(this).MemoDAO().getListeMemo();
         Log.i(TAG, "onCreate: BDD : "+MemoList);
 
         // MemoAdapter
@@ -75,19 +76,6 @@ public class MainActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper((new ItemTouchHelperCallback(memoAdapter)));
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
-//    @Override
-//    public void onSaveInstanceState(Bundle outState)
-//    {
-//    // sauvegardes :
-//        for (int i = 1; i <= (memoAdapter.getItemCount()); i++) {
-//            Log.i(TAG, "onSaveInstanceState: I : "+ i);
-//
-//        }
-//
-//    // permet à Android de faire ses propres sauvegardes :
-//        super.onSaveInstanceState(outState);
-//    }
 
     // Add new Memo on click "+"
     public void clickButton(View view) {
@@ -117,5 +105,26 @@ public class MainActivity extends AppCompatActivity {
     public void showHelp(View view) {
         Intent intent = new Intent(view.getContext(), HelpActivity.class);
         view.getContext().startActivity(intent);
+    }
+
+    public void deleteAll(View view) {
+        int position = 0;
+        int nbLoop = 0;
+        while(position != memoAdapter.getItemCount()) {
+            AppDatabaseHelper.getDatabase(view.getContext()).MemoDAO().delete(MemoList.get(position));
+            Log.i(TAG, "deleteAll: POSITION"+MemoList.get(position));
+            MemoList.remove(position);
+            memoAdapter.notifyItemRemoved(position);
+            nbLoop++;
+            Log.i(TAG, "deleteAll: LOOP"+nbLoop);
+        }
+
+        if (nbLoop==1) {
+            Toast.makeText(view.getContext(), "Mémo supprimé !", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(view.getContext(), nbLoop+" Mémo(s) supprimé(s) !", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 }

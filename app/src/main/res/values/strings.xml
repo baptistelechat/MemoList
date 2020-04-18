@@ -6,4 +6,5 @@
 
     <string name="blank_fragment">A blank fragment</string>
     <string name="help">Help</string>
+    <string name="deleteAll">Supprimer tous les mémos</string>
 </resources>

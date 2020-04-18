@@ -46,6 +46,7 @@
         android:layout_marginEnd="10dp" />
 
     <ImageView
+        android:id="@+id/help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,10 +63,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputDescription"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/deleteAll"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="15dp"/>
 
     <Button
         android:id="@+id/button"
@@ -82,6 +84,19 @@
         android:layout_marginRight="10dp"
         android:onClick="clickButton"
         android:layout_marginEnd="10dp" />
+
+    <TextView
+        android:id="@+id/deleteAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleteAll"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/MemoList"
+        app:layout_constraintRight_toLeftOf="@id/help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/MemoList"
+        android:layout_marginBottom="15dp"
+        android:onClick="deleteAll"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
