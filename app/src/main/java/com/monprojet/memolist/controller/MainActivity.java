@@ -119,11 +119,12 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "deleteAll: LOOP"+nbLoop);
         }
 
-        if (nbLoop==1) {
+        if (nbLoop==0) {
+            Toast.makeText(view.getContext(), "Aucun mémo !", Toast.LENGTH_SHORT).show();
+        } else if (nbLoop==1) {
             Toast.makeText(view.getContext(), "Mémo supprimé !", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(view.getContext(), nbLoop+" Mémo(s) supprimé(s) !", Toast.LENGTH_SHORT).show();
-
         }
 
     }
